@@ -5,7 +5,7 @@
 
 [Link to video](https://drive.google.com/drive/folders/17cG03wHaxsOP9Cz8LHx_p6ZBMkbx58l8?usp=sharing)
 
-## Part1
+## Part 1
 
 - Вопрос 1
 Зачем нужен ssh? Ответ на пару предложений.
