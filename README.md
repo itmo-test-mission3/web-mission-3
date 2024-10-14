@@ -12,11 +12,11 @@
 ## Part 3 - Select’ы
 [Link to video](https://drive.google.com/file/d/1lJ838N6PGIEiPyBElV5xgM-dYozrVEWl/view?usp=sharing)
 
-### Получить список юзернеймов пользователей
+### **Получить список юзернеймов пользователей**
 ```sql
 SELECT username FROM users;
 
-**### Получить количество отправленных сообщений каждым пользователем:**
+### **Получить количество отправленных сообщений каждым пользователем:** 
 
 username - number of sent messages
 SELECT username, COUNT(*) AS number_of_sent_messages
@@ -24,7 +24,7 @@ FROM users AS u
 JOIN messages AS m ON u.id = m.from
 GROUP BY username;
 
-**### Получить пользователя с самым большим количеством полученных сообщений и само количество:**
+### **Получить пользователя с самым большим количеством полученных сообщений и само количество:**
  username - number of received messages
 SELECT username, COUNT(*) AS number_of_received_messages
 FROM users AS u 
