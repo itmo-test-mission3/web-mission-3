@@ -9,10 +9,11 @@
 
 [Link to video](https://drive.google.com/file/d/1KQE20_Zb59XLIDGHCMMz49br943I2ruK/view?usp=drive_link)
 
-## Part 3 - select’ы
+## Part 3 - Select’ы
 [Link to video](https://drive.google.com/file/d/1lJ838N6PGIEiPyBElV5xgM-dYozrVEWl/view?usp=sharing)
+
 -- Получить список юзернеймов пользователей
-SELECT username FROM users;
+'''SELECT username FROM users;
 
 -- Получить количество отправленных сообщений каждым пользователем: username - number of sent messages
 SELECT username, COUNT(*) AS number_of_sent_messages
