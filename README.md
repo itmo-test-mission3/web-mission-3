@@ -12,35 +12,35 @@
 ## Part 3 - Select’ы
 [Link to video](https://drive.google.com/file/d/1lJ838N6PGIEiPyBElV5xgM-dYozrVEWl/view?usp=sharing)
 
-### **Получить список юзернеймов пользователей**
-```sql
-SELECT username FROM users;
+1. получить список юзернеймов пользователей
+   ```sql
+   select username from users
+   ```
+2. получить кол-во отправленных сообщений каждым пользователем:
+   username - number of sent messages
+   ```sql
+   select username, count(*) as number_of_sent_messages
+   from users as u join messages as m on u.id = m.from
+   group by username
+   ```
+    
+3. получить пользователя с самым большим кол-вом полученных сообщений и само количество
+   username - number of received messages
+   ```sql
+   select username, count(*) as number_of_received_messages
+   from users as u join messages as m on u.id = m.to
+   group by username
+   order by number_of_received_messages desc
+   limit 1
+   ```
+4. Получить среднее кол-во сообщений, отправленное каждым пользователем
+   ```sql
+   select round(
+   (select avg(t.number_of_sent_messages)
+   from
+   (select username, count(*) as number_of_sent_messages
+   from users as u join messages as m on u.id = m.from
+   group by username) as t)
+   , 2)
+   ```
 
-### **Получить количество отправленных сообщений каждым пользователем:** 
-
-username - number of sent messages
-SELECT username, COUNT(*) AS number_of_sent_messages
-FROM users AS u 
-JOIN messages AS m ON u.id = m.from
-GROUP BY username;
-
-### **Получить пользователя с самым большим количеством полученных сообщений и само количество:**
- username - number of received messages
-SELECT username, COUNT(*) AS number_of_received_messages
-FROM users AS u 
-JOIN messages AS m ON u.id = m.to
-GROUP BY username
-ORDER BY number_of_received_messages DESC
-LIMIT 1;
-
-### **Получить среднее количество сообщений, отправленное каждым пользователем**
-SELECT ROUND(
-    (SELECT AVG(t.number_of_sent_messages)
-     FROM (
-         SELECT username, COUNT(*) AS number_of_sent_messages
-         FROM users AS u 
-         JOIN messages AS m ON u.id = m.from
-         GROUP BY username
-     ) AS t), 2
-);
-rfr 
